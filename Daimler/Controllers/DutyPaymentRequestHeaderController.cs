@@ -159,8 +159,172 @@ namespace Daimler.Controllers
             return dutyPaymentRequestHeaders;
             //return await _context.DutyPaymentRequestHeader.ToListAsync();
         }
-            // GET: DutyPaymentRequestHeader/Details/5
-            public async Task<IActionResult> Details(int? id)
+
+        public class ISClist
+        {
+            public int Id { get; set; }
+            public string Dprno { get; set; }
+            public DateTime? DRPDate { get; set; }
+            public decimal? DutyDPR { get; set; }
+            public decimal? DutyISC { get; set; }
+            public int BOERecords { get; set; }
+            public int ISCRecords { get; set; }
+            public string Status { get; set; }
+        }
+
+        [HttpGet]
+        public IList<ISClist> GetISCRecords()
+        {
+
+            var ISCRecordList = (from DutyPaymentRequestHeader in _context.DutyPaymentRequestHeader
+                                 join DutyPaymentRequestDetail in _context.DutyPaymentRequestDetail on DutyPaymentRequestHeader.Id equals DutyPaymentRequestDetail.HeaderId
+                                 where DutyPaymentRequestDetail.IscExcelAttachmentId == null && DutyPaymentRequestDetail.IscPdfAttachmentId == null
+
+                                 select new ISClist
+                                 {
+                                     Id = DutyPaymentRequestHeader.Id,
+                                     Dprno = DutyPaymentRequestHeader.Dprno,
+                                     DRPDate = DutyPaymentRequestHeader.UploadedDate,
+                                     Status = "Pending"
+                                 }
+                                 ).Distinct().ToList();
+            foreach (var iscrecord in ISCRecordList)
+            {
+                var ISCDetailsList = (from DutyPaymentRequestDetail in _context.DutyPaymentRequestDetail
+                                     where DutyPaymentRequestDetail.HeaderId == iscrecord.Id
+
+                                     select new ISClist
+                                     {
+                                         Id = DutyPaymentRequestDetail.HeaderId,
+                                         DutyDPR = DutyPaymentRequestDetail.DutyValue,
+                                         DutyISC = DutyPaymentRequestDetail.Boeduty,
+                                         Status= DutyPaymentRequestDetail.Boeno
+                                     }
+                                 ).ToList();
+                iscrecord.DutyDPR = ISCDetailsList.Sum(x => x.DutyDPR);
+                iscrecord.DutyISC = ISCDetailsList.Sum(x => x.DutyISC);
+                iscrecord.BOERecords = ISCDetailsList.Count();
+                var lstboids = ISCDetailsList.Select(y => y.Status).ToList();
+                var ISCList = (from CHAISCDetail in _context.CHAISCDetail
+                               where lstboids.Contains(CHAISCDetail.Beno)
+
+                                      select new CHAISCDetail
+                                      {
+                                          Beno = CHAISCDetail.Beno
+
+                                      }
+                                 ).ToList();
+                iscrecord.ISCRecords = ISCList.Count();
+            }
+                                 //).ToList().Distinct();
+                                 //var ISCRecordList = (from DutyPaymentRequestHeader in _context.DutyPaymentRequestHeader
+                                 //                     join DutyPaymentRequestDetail in _context.DutyPaymentRequestDetail on DutyPaymentRequestHeader.Id equals DutyPaymentRequestDetail.HeaderId
+                                 //                     join CHAISCDetail in _context.CHAISCDetail on DutyPaymentRequestDetail.Boeno equals CHAISCDetail.Boeid into ps
+                                 //                     from CHAISCDetail in ps.DefaultIfEmpty()
+                                 //                     where DutyPaymentRequestDetail.IscExcelAttachmentId == null && DutyPaymentRequestDetail.IscPdfAttachmentId == null
+
+                                 //                     group new { DutyPaymentRequestDetail, DutyPaymentRequestHeader  } by new
+                                 //                     {
+                                 //                         DutyPaymentRequestHeader.Id,
+                                 //                         DutyPaymentRequestHeader.Dprno
+
+                                 //                     } into g
+                                 //                     select new ISClist()
+                                 //                     {
+                                 //                         Id = g.Key.Id,
+                                 //                         Dprno = g.Key.Dprno,
+                                 //                         DRPDate = g.Select(m => m.DutyPaymentRequestHeader.UploadedDate).FirstOrDefault(),
+                                 //                         DutyDPR = g.Sum(x => Math.Round(Convert.ToDecimal(x.DutyPaymentRequestDetail.DutyValue), 2)),
+                                 //                         DutyISC = g.Sum(x => Math.Round(Convert.ToDecimal(x.DutyPaymentRequestDetail.Boeduty), 2)),
+                                 //                         BOERecords= g.Count(),
+                                 //                         ISCRecords = g.Count(),
+                                 //                         Status = "Pending"
+                                 //                     }).ToList();
+
+
+            return ISCRecordList;
+            //return await _context.DutyPaymentRequestHeader.ToListAsync();
+        }
+
+        public class IDTlist
+        {
+            public int Id { get; set; }
+            public string Dprno { get; set; }
+            public DateTime? DRPDate { get; set; }
+            public decimal? DutyDPR { get; set; }
+            public decimal? DutyISC { get; set; }
+            public decimal? DutyIDT { get; set; }
+            public int BOERecords { get; set; }
+            public int ISCRecords { get; set; }
+            public int IDTRecords { get; set; }
+            public string Status { get; set; }
+        }
+
+
+        [HttpGet]
+        public IList<IDTlist> GetIDTRecords()
+        {
+
+            var IDTRecordList = (from DutyPaymentRequestHeader in _context.DutyPaymentRequestHeader
+                                 join DutyPaymentRequestDetail in _context.DutyPaymentRequestDetail on DutyPaymentRequestHeader.Id equals DutyPaymentRequestDetail.HeaderId
+                                 where DutyPaymentRequestDetail.IscExcelAttachmentId == null && DutyPaymentRequestDetail.IscPdfAttachmentId == null
+
+                                 select new IDTlist
+                                 {
+                                     Id = DutyPaymentRequestHeader.Id,
+                                     Dprno = DutyPaymentRequestHeader.Dprno,
+                                     DRPDate = DutyPaymentRequestHeader.UploadedDate,
+                                     Status = "Pending"
+                                 }
+                                 ).Distinct().ToList();
+            foreach (var iscrecord in IDTRecordList)
+            {
+                var IDTDetailsList = (from DutyPaymentRequestDetail in _context.DutyPaymentRequestDetail
+                                      where DutyPaymentRequestDetail.HeaderId == iscrecord.Id
+
+                                      select new IDTlist
+                                      {
+                                          Id = DutyPaymentRequestDetail.HeaderId,
+                                          DutyDPR = DutyPaymentRequestDetail.DutyValue,
+                                          DutyISC = DutyPaymentRequestDetail.Boeduty,
+                                          DutyIDT = DutyPaymentRequestDetail.Boeduty,
+                                          Status = DutyPaymentRequestDetail.Boeno
+                                      }
+                                 ).ToList();
+                iscrecord.DutyDPR = IDTDetailsList.Sum(x => x.DutyDPR);
+                iscrecord.DutyISC = IDTDetailsList.Sum(x => x.DutyISC);
+                iscrecord.DutyIDT = IDTDetailsList.Sum(x => x.DutyIDT);
+                iscrecord.BOERecords = IDTDetailsList.Count();
+                var lstboids = IDTDetailsList.Select(y => y.Status).ToList();
+                var ISCList = (from CHAISCDetail in _context.CHAISCDetail
+                               where lstboids.Contains(CHAISCDetail.Beno)
+
+                               select new CHAISCDetail
+                               {
+                                   Beno = CHAISCDetail.Beno
+
+                               }
+                                 ).ToList();
+                iscrecord.ISCRecords = ISCList.Count();
+
+                var IDTList = (from CHADTDetail in _context.CHADTDetail
+                               where lstboids.Contains(CHADTDetail.Beno)
+
+                               select new CHADTDetail
+                               {
+                                   Beno = CHADTDetail.Beno
+
+                               }
+                                 ).ToList();
+                iscrecord.IDTRecords = IDTList.Count();
+            }
+            
+
+            return IDTRecordList;
+           
+        }
+        // GET: DutyPaymentRequestHeader/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

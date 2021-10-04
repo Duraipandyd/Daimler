@@ -636,3 +636,5 @@ E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Daimler.RazorTargetAssembl
 E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Daimler.Views.pdb
 E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Daimler.csproj.CopyComplete
 E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Daimler.genruntimeconfig.cache
+E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Razor\Pages\UploadIscList.cshtml.g.cs
+E:\Old Source\Daimler\Daimler\obj\Debug\netcoreapp3.1\Razor\Pages\UploadIdtList.cshtml.g.cs

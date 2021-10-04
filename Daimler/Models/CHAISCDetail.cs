@@ -8,7 +8,7 @@ namespace Daimler.Models
     public partial class CHAISCDetail
     {
         public int Id { get; set; }
-        public int Boeid { get; set; }
+        public string Boeid { get; set; }
         public string JobNo { get; set; }
         public string Beno { get; set; }
         public DateTime? Bedate { get; set; }

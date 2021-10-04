@@ -263,14 +263,17 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">1</a></td>
-                                        <td class="b-r b-dashed b-grey w-25">14 Apr 2021</td>
-                                        <td class="b-r b-dashed b-grey w-25">ISC</td>
-                                        <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">SMP 21-22 0171</a></td>
-                                        <td class="b-r b-dashed b-grey w-25">1234567</td>
-                                        <td class="w-25"><span class="text-danger">Records Pending </span></td>
-                                    </tr>
-                                    <tr>
+                                        @foreach (var item in Model.dutyPaymentRequestHeaders)
+                                        {
+                                            <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">1</a></td>
+                                            <td class="b-r b-dashed b-grey w-25">14 Apr 2021</td>
+                                            <td class="b-r b-dashed b-grey w-25">ISC</td>
+                                            <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">SMP 21-22 0171</a></td>
+                                            <td class="b-r b-dashed b-grey w-25">1234567</td>
+                                            <td class="w-25"><span class="text-danger">Records Pending </span></td>
+                                        }
+                                        </tr>
+                                    @*<tr>
                                         <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">2</a></td>
                                         <td class="b-r b-dashed b-grey w-25">10 Oct 2021</td>
                                         <td class="b-r b-dashed b-grey w-25">ISC</td>
@@ -301,7 +304,7 @@
                                         <td class="font-montserrat all-caps fs-12 w-50"><a href="BE_records.html">AMI 21-22 0456</a></td>
                                         <td class="b-r b-dashed b-grey w-25">9999999</td>
                                         <td class="w-25"><span class="text-complete">Duty Amount Mismatch</span></td>
-                                    </tr>
+                                    </tr>*@
 
 
                                 </tbody>

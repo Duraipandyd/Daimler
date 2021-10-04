@@ -262,97 +262,102 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">1</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">AIR (CHE)-127</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            08-08-2021
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
+                                    @foreach (var item in Model.isclist)
+                                    {
+                                        <tr>
 
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">5</a>
-                                        </td>
+                                            <td class="b-r b-dashed b-grey w-25">@item.Id</td>
+                                            <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">@item.Dprno</td>
+                                            <td class="b-r b-dashed b-grey w-25">
+                                                @item.DRPDate
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.DutyDPR</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.DutyISC</a>
+                                            </td>
 
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">0</a>
-                                        </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.BOERecords</a>
+                                            </td>
 
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
-                                            <a href="uploadisc_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.ISCRecords</a>
+                                            </td>
 
+                                            <td class="b-r b-dashed b-grey w-25">
+                                                <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
+                                                <a href="UploadIscList/@item.Id"> <button class="btn btn-complete btn-xs m-t-10">
+                                                                             <span id="<%= @item.Id %>" style="text-decoration: underline;cursor:pointer;" onclick="window.location.href = 'UploadIscList/'+@item.Id;"></span>
+                                                    @item.Status</button></a>
+                                            </td>
 
-                                    </tr>
+                                           
+                                        </tr>
 
+                                    }
 
+                                        @*<tr>
+                <td class="b-r b-dashed b-grey w-25">2</td>
+                <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">AIR (CHE)-131</td>
+                <td class="b-r b-dashed b-grey w-25">
+                    08-08-2021
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">50,000</a>
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">50,000</a>
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">8</a>
+                </td>
 
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">2</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">AIR (CHE)-131</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            08-08-2021
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">8</a>
-                                        </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">3</a>
+                </td>
 
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">3</a>
-                                        </td>
-
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
-                                            <a href="uploadisc_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
-
-
-
-                                    </tr>
-
-
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">3</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">SEA (ICD) 092</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            09-08-2021
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">10</a>
-                                        </td>
-
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">5</a>
-                                        </td>
-
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
-                                            <a href="uploadisc_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
+                <td class="b-r b-dashed b-grey w-25">
+                    <button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>
+                    <a href="uploadisc_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
+                </td>
 
 
 
-                                    </tr>
+            </tr>
 
-                                </tbody>
+
+            <tr>
+                <td class="b-r b-dashed b-grey w-25">3</td>
+                <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">SEA (ICD) 092</td>
+                <td class="b-r b-dashed b-grey w-25">
+                    09-08-2021
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">50,000</a>
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">50,000</a>
+                </td>
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">10</a>
+                </td>
+
+                <td class="b-r b-dashed b-grey w-25 text-center">
+                    <a href="#" class="text-danger">5</a>
+                </td>
+
+                <td class="b-r b-dashed b-grey w-25">
+                    <button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>
+                    <a href="uploadisc_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
+                </td>
+
+
+
+            </tr>*@
+
+                                    </tbody>
                             </table>
 
 

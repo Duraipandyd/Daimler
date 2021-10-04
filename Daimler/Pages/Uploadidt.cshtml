@@ -1,7 +1,7 @@
 ﻿@page
 @model Daimler.Pages.UploadidtModel
 @{
-    ViewData["Title"] = "Customs Portal - Upload ISC";
+    ViewData["Title"] = "Customs Portal - Upload IDT";
 }
 
     <script type="text/javascript">
@@ -265,109 +265,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">1</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">AIR (CHE)-127</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            2021-08-08
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">5</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">5</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">0</a>
-                                        </td>
+                                    @foreach (var item in Model.idtlist)
+                                    {
+                                        <tr>
+                                            <td class="b-r b-dashed b-grey w-25">@item.Id</td>
+                                            <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">@item.Dprno</td>
+                                            <td class="b-r b-dashed b-grey w-25">
+                                                @item.DRPDate
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.DutyDPR</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.DutyISC</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.DutyIDT</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.BOERecords</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.ISCRecords</a>
+                                            </td>
+                                            <td class="b-r b-dashed b-grey w-25 text-center">
+                                                <a href="#" class="text-danger">@item.IDTRecords</a>
+                                            </td>
 
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
-                                            <a href="uploadidt_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
-
-
-                                    </tr>
-
+                                            <td class="b-r b-dashed b-grey w-25">
+                                                <!--<button class="btn btn-danger btn-xs m-t-10" onclick = "showBillFile()">Pending</button>-->
+                                                <a href="UploadIdtList"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
+                                            </td>
 
 
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">2</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">AIR (CHE)-131</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            2021-08-08
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">8</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">8</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">3</a>
-                                        </td>
+                                        </tr>
 
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <a href="uploadidt_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
+                                    }
 
 
-
-                                    </tr>
-
-
-                                    <tr>
-                                        <td class="b-r b-dashed b-grey w-25">3</td>
-                                        <td class="font-montserrat b-r b-dashed b-grey  all-caps fs-12 w-50">SEA (ICD) 092</td>
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            2021-09-03
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">50,000</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">10</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">10</a>
-                                        </td>
-                                        <td class="b-r b-dashed b-grey w-25 text-center">
-                                            <a href="#" class="text-danger">5</a>
-                                        </td>
-
-                                        <td class="b-r b-dashed b-grey w-25">
-                                            <a href="uploadidt_list.html"> <button class="btn btn-complete btn-xs m-t-10">Pending</button></a>
-                                        </td>
-
-
-
-                                    </tr>
-
-                                </tbody>
+                                    </tbody>
                             </table>
 
 
